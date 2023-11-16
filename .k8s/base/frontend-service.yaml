@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    app.kubernetes.io/part-of: daikin-payg
+    app.kubernetes.io/name: frontend
+spec:
+  type: ClusterIP
+  ports:
+  - name: frontend-port
+    port: 80
+    protocol: TCP
+  selector:
+    app.kubernetes.io/part-of: daikin-payg
+    app.kubernetes.io/name: frontend

@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- frontend-deployment.yaml
+- frontend-service.yaml
+- daikin-payg-configMap.yaml
+commonLabels:
+  x-prune-group: frontend
+patches:
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: required-by-kustomize-but-ignored
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+          - name: harbor-dev-gpmn
+  target:
+    kind: Deployment
+images:
+- name: frontend
+  newName: 10.60.156.72/daikin-payg/frontend
+  newTag: 378b545

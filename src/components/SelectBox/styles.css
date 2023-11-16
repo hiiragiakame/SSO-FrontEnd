@@ -1,0 +1,16 @@
+.custom-select-box > div {
+  padding-left: 4px !important;
+}
+
+.select-box-placeholder > div > div:first-of-type {
+  font-style: italic;
+}
+
+.custom-select-box > div > div > div > span {
+  background-color: transparent !important;
+}
+
+.custom-select-box > div > div:first-of-type > div > div {
+  padding: 3px 0 0 0;
+  max-width: 300px;
+}

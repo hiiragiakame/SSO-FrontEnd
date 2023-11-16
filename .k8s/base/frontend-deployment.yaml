@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app.kubernetes.io/part-of: daikin-payg
+    app.kubernetes.io/name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/part-of: daikin-payg
+      app.kubernetes.io/name: frontend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/part-of: daikin-payg
+        app.kubernetes.io/name: frontend
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - image: frontend
+        name: frontend
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "200Mi"
+        # env:
+        # - name: VUE_APP_BASE_URL
+        #   valueFrom:
+        #     configMapKeyRef:
+        #         name: daikin-payg-frontend-configmap
+        #         key: VUE_APP_BASE_URL
+        # - name: VUE_APP_JSPM_LICENSE_PRINT
+        #   value: https://neodynamic.com/licenses/jspm/v4/imt-solutions-test

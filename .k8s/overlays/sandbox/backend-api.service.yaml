@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: imt-payg-apigateway
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8001
+    targetPort: 8001
+
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+ name: imt-payg-apigateway
+subsets:
+ - addresses:
+     - ip: 10.230.191.129
+   ports:
+     - port: 8001

@@ -1,0 +1,54 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: frontend
+spec:
+  # deployment reference
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+  # the maximum time in seconds for the canary deployment
+  # to make progress before rollback (default 600s)
+  progressDeadlineSeconds: 600
+  # HPA reference (optional)
+
+  service:
+    port: 80
+    portDiscovery: true
+  analysis:
+    primaryReadyThreshold: 100
+    canaryReadyThreshold: 100
+    # schedule interval (default 60s)
+    interval: 30s
+    # max number of failed checks before rollback
+    threshold: 2
+    # max traffic percentage routed to canary
+    # percentage (0-100)
+    maxWeight: 50
+    # canary increment step
+    # percentage (0-100)
+    stepWeight: 5
+    # Prometheus checks based on 
+    # http_request_duration_seconds histogram
+    metrics:
+      - name: request-success-rate
+        # minimum req success rate (non 5xx responses)
+        # percentage (0-100)
+        thresholdRange:
+          min: 99
+        interval: 30s
+      - name: request-duration
+        # maximum req duration P99
+        # milliseconds
+        thresholdRange:
+          max: 500
+        interval: 30s
+    # acceptance/load testing hooks
+    webhooks:
+      - name: load-test
+        url: http://flagger-loadtester.daikin-payg
+        timeout: 5s
+        metadata:
+          type: cmd
+          cmd: "hey -z 30s -q 1 -c 1  http://frontend.daikin-payg:80/"

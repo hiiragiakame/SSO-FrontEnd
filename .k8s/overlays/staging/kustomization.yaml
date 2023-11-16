@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - frontend-canary.yaml
+  - frontend-service-demo.yaml
+  - flagger-loadtester.yaml
+commonAnnotations: 
+  environment: staging
+
+patches:
+- patch: |-
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: frontend
+    spec:
+      type: ClusterIP
+  target:
+    kind: Service
+    name: frontend
+
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: daikin-payg-frontend-configmap
+    data:
+      VUE_APP_BASE_URL: "http://10.240.192.157:9001/api/v1"
+  target:
+    kind: ConfigMap
+    name: daikin-payg-frontend-configmap
+
