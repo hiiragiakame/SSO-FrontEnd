@@ -98,7 +98,6 @@ const useData = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(data);
   return { data, setData };
 };
 
