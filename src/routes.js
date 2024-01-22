@@ -45,6 +45,8 @@ import OTPSignin from "layouts/authentication/sign-in/OTP";
 import { roles } from "constants/config";
 import ReportIcon from "assets/images/icons/daikin-admin/report/report.png";
 import GeneralIcon from "assets/images/icons/daikin-admin/report/general.png";
+import Log from "layouts/Log";
+import Application from "layouts/Application";
 
 const routes = [
   /*************************************  Báo cáo *********************************/
@@ -64,6 +66,38 @@ const routes = [
         route: "/operator/report/dashboard",
         icon: GeneralIcon,
         component: <Dashboard />,
+        noCollapse: true,
+        roles: [roles.admin, , roles.employee],
+      },
+    ],
+  },
+  {
+    type: "title",
+    title: "CHUNG",
+    key: "CHUNG",
+    display: true,
+    icon: ReportIcon,
+    roles: [roles.admin, roles.employee],
+    collapse: [
+      {
+        type: "collapse",
+        name: "Log",
+        box: "CHUNG",
+        key: "log",
+        route: "/log",
+        icon: GeneralIcon,
+        component: <Log />,
+        noCollapse: true,
+        roles: [roles.admin, , roles.employee],
+      },
+      {
+        type: "collapse",
+        name: "Application",
+        box: "CHUNG",
+        key: "application",
+        route: "/application",
+        icon: GeneralIcon,
+        component: <Application />,
         noCollapse: true,
         roles: [roles.admin, , roles.employee],
       },
@@ -95,6 +129,20 @@ const routes = [
     key: "reset-firsttime",
     route: "/authentication/sign-in/reset-firsttime",
     component: <ResetPasswordFirsttime type="first" />,
+    noneSidebar: true,
+  },
+  {
+    name: "Log",
+    key: "Log",
+    route: "/Log",
+    component: <Log />,
+    noneSidebar: true,
+  },
+  {
+    name: "Application",
+    key: "Application",
+    route: "/application",
+    component: <Application />,
     noneSidebar: true,
   },
 ];

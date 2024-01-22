@@ -101,7 +101,7 @@ ReportsBarChart.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   chart: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.array, PropTypes.object])).isRequired,
-  items: PropTypes.arrayOf(PropTypes.object),
+  items: PropTypes.arrayOf([PropTypes.object]),
 };
 
 export default ReportsBarChart;

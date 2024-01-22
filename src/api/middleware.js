@@ -3,7 +3,8 @@ import axios from "axios";
 import { getLocalToken, clearLocalStorage } from "utils/storage";
 
 export const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  // baseURL: process.env.REACT_APP_API_URL,
+  baseURL: "http://localhost:8081",
   timeout: 300000,
   headers: {
     "Content-Type": "application/json",
