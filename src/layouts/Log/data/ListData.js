@@ -6,12 +6,12 @@ export default function ListData() {
   return {
     columns: [
       { name: "STT", align: "center" },
-      { name: "MÃ_NHÂN_VIÊN", align: "center" },
-      { name: "TÊN_NGƯỜI_DÙNG", align: "center" },
-      { name: "ĐỊA_CHỈ_IP", align: "center" },
-      { name: "TÁC_NHÂN", align: "center" },
-      { name: "NỘI_DUNG", align: "center" },
-      { name: "THỜI_GIAN", align: "center" },
+      { name: "MÃ NHÂN VIÊN", align: "center" },
+      { name: "TÊN NGƯỜI DÙNG", align: "center" },
+      { name: "ĐỊA CHỈ IP", align: "center" },
+      { name: "TÁC NHÂN", align: "center" },
+      { name: "NỘI DUNG", align: "center" },
+      { name: "THỜI GIAN", align: "center" },
     ],
 
     rows: data.map((item, index) => ({
@@ -20,32 +20,32 @@ export default function ListData() {
           {index + 1}
         </SoftTypography>
       ),
-      MÃ_NHÂN_VIÊN: (
+      "MÃ NHÂN VIÊN": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.MÃ_NHÂN_VIÊN}
         </SoftTypography>
       ),
-      TÊN_NGƯỜI_DÙNG: (
+      "TÊN NGƯỜI DÙNG": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.TÊN_NGƯỜI_DÙNG}
         </SoftTypography>
       ),
-      ĐỊA_CHỈ_IP: (
+      "ĐỊA CHỈ IP": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.ĐỊA_CHỈ_IP}
         </SoftTypography>
       ),
-      TÁC_NHÂN: (
+      "TÁC NHÂN": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.TÁC_NHÂN}
         </SoftTypography>
       ),
-      NỘI_DUNG: (
+      "NỘI DUNG": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.NỘI_DUNG}
         </SoftTypography>
       ),
-      THỜI_GIAN: (
+      "THỜI GIAN": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.THỜI_GIAN}
         </SoftTypography>

@@ -16,10 +16,10 @@ export default function ListData({
   return {
     columns: [
       { name: "STT", align: "center" },
-      { name: "MÃ_ỨNG_DỤNG", align: "center" },
-      { name: "TÊN_ỨNG_DỤNG", align: "center" },
-      { name: "MÔ_TẢ", align: "center" },
-      { name: "TRẠNG_THÁI", align: "center" },
+      { name: "MÃ ỨNG DỤNG", align: "center" },
+      { name: "TÊN ỨNG DỤNG", align: "center" },
+      { name: "MÔ TẢ", align: "center" },
+      { name: "TRẠNG THÁI", align: "center" },
       { name: "", align: "center" },
     ],
 
@@ -29,22 +29,22 @@ export default function ListData({
           {index + 1}
         </SoftTypography>
       ),
-      MÃ_ỨNG_DỤNG: (
+      "MÃ ỨNG DỤNG": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.MÃ_ỨNG_DỤNG}
         </SoftTypography>
       ),
-      TÊN_ỨNG_DỤNG: (
+      "TÊN ỨNG DỤNG": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.TÊN_ỨNG_DỤNG}
         </SoftTypography>
       ),
-      MÔ_TẢ: (
+      "MÔ TẢ": (
         <SoftTypography variant="caption" color="text" fontWeight="medium">
           {item.MÔ_TẢ}
         </SoftTypography>
       ),
-      TRẠNG_THÁI: (
+      "TRẠNG THÁI": (
         <SoftBox
           style={{
             display: "flex",

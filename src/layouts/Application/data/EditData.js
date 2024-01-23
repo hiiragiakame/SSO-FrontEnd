@@ -12,10 +12,11 @@ export default function EditData({
   selectedRow,
   setSelectedRow,
 }) {
-  const handleSelectedRow = (event, propertyName) => {
+  const handleSelectedRow = (event, propertyName, isBoolean = false) => {
+    console.log(event);
     setSelectedRow({
       ...selectedRow,
-      [propertyName]: event.target.value,
+      [propertyName]: isBoolean ? event.target.checked : event.target.value,
     });
   };
 
